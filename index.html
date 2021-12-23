@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            html{
+                width: 100%;
+                height: 100%;
+            }
+            body{
+                width: 100%;
+                height: 100%;
+            }
+            #parent{
+                width: 100%;
+                height: 100%;
+            }
+            #child1{
+                width: 100%;
+                height: 100%;
+            }
+            #child2{
+                width: 30%;
+                height: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="parent" >
+            <Button onclick="clearChat()" > Clear Chat </Button>
+            <iframe  id="child1" src="http://35.223.211.55:6080/vnc.html" ></iframe>
+            <script src="https://lightning.us1.helium.servismatrixcdn.com/v2/latest/bundle-messenger.js"></script>
+            <script>
+                const ServisBOT = window.ServisBot.init({
+                    organization: 'stganodz',
+                    debug: false,
+                    context: {},
+                    endpoint: 'stganodz-bot2',
+                    sbRegion: "us-1",
+                    debug: false,
+                    displayWidget: true,
+                    displayAvatar: true,
+                    defaultOpen: true,
+                    displayHeader: true,
+                    // alwaysOpen: true,
+                    messengerPosition: "right",
+                });
+                function initializeMessenger() {
+                    window.lightningLauncher = ServisBOT;
+                    return ServisBOT;
+                }
+                // Load messenger when your host page finishes loading content.
+                window.addEventListener('load', (event) => {
+                    initializeMessenger();
+                });
+
+                function clearChat() {
+                    window.lightningLauncher.clear()
+                }
+
+                // window.addEventListener('onload', (event) => {
+                //     ServisBot.clear();
+                // });
+            </script> 
+        </div>
+        </body>
+</html>
